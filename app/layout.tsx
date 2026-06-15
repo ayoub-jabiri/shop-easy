@@ -17,7 +17,7 @@ export default function RootLayout({
         <html lang="en">
             <body className="min-h-full flex flex-col">
                 <AppHeader />
-                <main className="container">{children}</main>
+                <main>{children}</main>
                 <AppFooter />
             </body>
         </html>
