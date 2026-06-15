@@ -4,14 +4,13 @@
 
 :root {
     --background-color: #f8f9ff;
-    --text-color: #3c4a42;
-    --green-color: #006c49;
+    --text-color: #151c27;
+    --green-color: #004532;
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
     font-family: "Roboto", sans-serif;
+    color: var(--text-color);
 }
 
 .container {
