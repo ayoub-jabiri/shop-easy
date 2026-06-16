@@ -10,20 +10,21 @@ export default function ProductCard({ product }: ProductCardProps) {
     return (
         <div>
             <Image
-                src="/hero.png"
+                src={product.image}
                 alt={product.title}
                 width={300}
                 height={200}
+                className="h-[200px] max-md:mx-auto"
             />
             <div className="p-4">
                 <h3 className="font-bold" title={product.title}>
-                    {product.title.length <= 20
+                    {product.title.length <= 15
                         ? product.title
-                        : product.title.slice(0, 20) + "..."}
+                        : product.title.slice(0, 15) + "..."}
                 </h3>
                 <h4>{product.price} $</h4>
                 <Link
-                    href="/contact"
+                    href={`/${product.slug}`}
                     className="btn w-full mt-4 bg-transparent text-(--green-color) border border-(--green-color)"
                 >
                     View Details

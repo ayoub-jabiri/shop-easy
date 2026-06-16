@@ -12,7 +12,10 @@ export default function ProductsSection() {
                 </p>
                 <div className="grid grid-cols-12 gap-5">
                     {products.map((product: Product) => (
-                        <div key={product.id} className="col-span-3">
+                        <div
+                            key={product.id}
+                            className="col-span-12 md:col-span-6 lg:col-span-3"
+                        >
                             <ProductCard product={product} />
                         </div>
                     ))}
