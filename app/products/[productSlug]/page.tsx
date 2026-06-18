@@ -1,5 +1,6 @@
 import { products } from "@/app/_data/products";
 import type { Product } from "@/app/_types/Products";
+import { RiShieldCheckLine, RiTruckLine } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -34,17 +35,17 @@ export default async function ProductDetails({ params }: DetailsProps) {
                         <Link href="/">Home</Link>
                     </li>
                     <li>
-                        <Link href="/products">Documents</Link>
+                        <Link href="/products">Products</Link>
                     </li>
                     <li>
-                        <span className="inline-flex items-center gap-2">
+                        <span className="inline-flex items-center gap-2 hover:no-underline cursor-default">
                             {currentProduct.title}
                         </span>
                     </li>
                 </ul>
             </div>
             <div className="grid grid-cols-12 gap-5">
-                <div className="col-span-12 md:col-span-7 bg-(--background-color) py-4">
+                <div className="col-span-12 md:col-span-7 bg-(--background-color) flex justify-center items-center">
                     <Image
                         src={currentProduct.image}
                         alt={currentProduct.title}
@@ -69,9 +70,29 @@ export default async function ProductDetails({ params }: DetailsProps) {
                         <span className="font-bold">Category:</span>{" "}
                         <span>{currentProduct.category}</span>
                     </h2>
-                    <button className="btn flex justify-center items-center w-full mx-auto bg-(--green-color) text-white border border-(--green-color)">
+                    <button className="btn flex justify-center items-center w-full mx-auto mb-4 bg-(--green-color) text-white border border-(--green-color)">
                         Add to Cart
                     </button>
+                    <div className="grid grid-cols-12 justify-center text-sm px-4">
+                        <div className="col-span-6 flex items-center gap-3">
+                            <RiShieldCheckLine />
+                            <div>
+                                <h3>1 Year Warranty</h3>
+                                <span className="text-[#444]">
+                                    Apple Official Care
+                                </span>
+                            </div>
+                        </div>
+                        <div className="col-span-6 flex items-center gap-3">
+                            <RiTruckLine />
+                            <div>
+                                <h3>Free Shipping</h3>
+                                <span className="text-[#444]">
+                                    Orders over 500 DH
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
