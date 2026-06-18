@@ -24,7 +24,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 </h3>
                 <h4>{product.price} $</h4>
                 <Link
-                    href={`/${product.slug}`}
+                    href={`/products/${product.slug}`}
                     className="btn w-full mt-4 bg-transparent text-(--green-color) border border-(--green-color)"
                 >
                     View Details

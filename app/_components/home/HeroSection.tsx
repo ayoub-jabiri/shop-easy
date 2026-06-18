@@ -13,9 +13,12 @@ export default function HeroSection() {
                         designed to elevate your daily workflow and digital
                         lifestyle.
                     </p>
-                    <button className="btn bg-(--green-color) text-white border border-(--green-color) rounded-none">
+                    <a
+                        href="#products-section"
+                        className="btn bg-(--green-color) text-white border border-(--green-color) rounded-none"
+                    >
                         Explore Catalog
-                    </button>
+                    </a>
                 </div>
                 <div className="max-md:hidden md:col-span-6">
                     <Image

@@ -8,6 +8,10 @@
     --green-color: #004532;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     color: var(--text-color);
