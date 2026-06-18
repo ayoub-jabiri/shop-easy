@@ -14,7 +14,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 alt={product.title}
                 width={300}
                 height={200}
-                className="h-[200px] max-md:mx-auto"
+                className="bg-(--background-color) p-4 h-[200px] max-md:mx-auto"
             />
             <div className="p-4">
                 <h3 className="font-bold" title={product.title}>

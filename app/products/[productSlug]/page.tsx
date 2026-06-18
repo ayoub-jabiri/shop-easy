@@ -15,8 +15,6 @@ export default async function ProductDetails({ params }: DetailsProps) {
         (product: Product) => product.slug == productSlug
     );
 
-    console.log(currentProduct);
-
     if (!currentProduct) {
         return (
             <div className="container py-8">
@@ -73,7 +71,7 @@ export default async function ProductDetails({ params }: DetailsProps) {
                     <button className="btn flex justify-center items-center w-full mx-auto mb-4 bg-(--green-color) text-white border border-(--green-color)">
                         Add to Cart
                     </button>
-                    <div className="grid grid-cols-12 justify-center text-sm px-4">
+                    <div className="grid grid-cols-12 justify-center gap-5 text-sm px-4">
                         <div className="col-span-6 flex items-center gap-3">
                             <RiShieldCheckLine />
                             <div>
