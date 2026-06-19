@@ -2,6 +2,7 @@
 import { useCartContext } from "@/app/_context/CartContext";
 import type { CartContextType } from "@/app/_context/CartContext";
 import { Product } from "@/app/_types/Products";
+import React, { useEffect, useState } from "react";
 
 interface AddToCartProps {
     currentProduct: Product;
@@ -10,18 +11,30 @@ interface AddToCartProps {
 export default function AddToCart({ currentProduct }: AddToCartProps) {
     const { cartData, setCartItems }: CartContextType = useCartContext();
 
-    function handleAddToCart(): void {
-        console.log(currentProduct);
+    const [isAdded, setIsAdded] = useState<boolean>(false);
 
-        console.log(cartData);
+    // Check if the Product already exists in the Cart
+    const item = cartData.cartItems.find(
+        (item: Product) => item.slug == currentProduct.slug
+    );
+    if (item && !isAdded) {
+        setIsAdded(true);
+    }
+
+    function handleAddToCart(): void {
+        setIsAdded(true);
+        setCartItems(currentProduct);
     }
 
     return (
         <button
-            className="btn flex justify-center items-center w-full mx-auto mb-4 bg-(--green-color) text-white border border-(--green-color)"
+            className={`btn flex justify-center items-center w-full mx-auto mb-4 bg-(--green-color) text-white border border-(--green-color) ${
+                isAdded ? "bg-gray-400" : ""
+            }`}
+            disabled={isAdded}
             onClick={handleAddToCart}
         >
-            Add to Cart
+            {isAdded ? "Product Added" : "Add to Cart"}
         </button>
     );
 }
