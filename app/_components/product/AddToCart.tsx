@@ -1,8 +1,10 @@
 "use client";
-import { useCartContext } from "@/app/_context/CartContext";
-import type { CartContextType } from "@/app/_context/CartContext";
+import {
+    useCartContext,
+    type CartContextType,
+} from "@/app/_context/CartContext";
 import { Product } from "@/app/_types/Products";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface AddToCartProps {
     currentProduct: Product;
@@ -17,13 +19,14 @@ export default function AddToCart({ currentProduct }: AddToCartProps) {
     const item = cartData.cartItems.find(
         (item: Product) => item.slug == currentProduct.slug
     );
+    console.log(cartData);
     if (item && !isAdded) {
         setIsAdded(true);
     }
 
     function handleAddToCart(): void {
-        setIsAdded(true);
         setCartItems(currentProduct);
+        setIsAdded(true);
     }
 
     return (

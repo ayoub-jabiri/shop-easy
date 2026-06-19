@@ -3,6 +3,10 @@ import { RiShoppingCart2Line } from "@remixicon/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { NavLink } from "@/app/_types/NavLink";
+import {
+    useCartContext,
+    type CartContextType,
+} from "@/app/_context/CartContext";
 
 export default function AppHeader() {
     const pathName: string = usePathname();
@@ -28,6 +32,8 @@ export default function AppHeader() {
         }
     });
 
+    const { cartData }: CartContextType = useCartContext();
+
     return (
         <header className="bg-white py-4 shadow-sm sticky top-0 z-10">
             <div className="container">
@@ -51,7 +57,12 @@ export default function AppHeader() {
                                 </li>
                             ))}
                         </ul>
-                        <Link href="/cart">
+                        <Link href="/cart" className="relative">
+                            {cartData.cartItemsCount > 0 && (
+                                <div className="badge badge-success absolute top-[-10px] right-[-15px] w-[10px] h-[20px] text-sm">
+                                    {cartData.cartItemsCount}
+                                </div>
+                            )}
                             <RiShoppingCart2Line />
                         </Link>
                     </div>

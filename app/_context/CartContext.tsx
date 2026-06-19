@@ -13,7 +13,7 @@ export interface CartContextType {
     setCartItems: (newItem: Product) => void;
 }
 
-const CartContext = createContext<CartContextType>({
+export const CartContext = createContext<CartContextType>({
     cartData: {
         cartItemsCount: 0,
         cartItems: [],

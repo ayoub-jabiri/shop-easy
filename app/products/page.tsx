@@ -1,7 +1,6 @@
 import { products } from "@/app/_data/products";
 import type { Product } from "@/app/_types/Products";
 import ProductCard from "@/app/_components/home/ProductCard";
-import { useCartContext } from "../_context/CartContext";
 
 export default function Products() {
     return (

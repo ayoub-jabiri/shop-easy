@@ -17,11 +17,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <AppHeader />
                 <CartProvider>
+                    <AppHeader />
                     <main className="min-h-[calc(100vh-60px)]">{children}</main>
+                    <AppFooter />
                 </CartProvider>
-                <AppFooter />
             </body>
         </html>
     );
