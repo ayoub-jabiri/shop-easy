@@ -1,3 +1,4 @@
+import AddToCart from "@/app/_components/product/AddToCart";
 import { products } from "@/app/_data/products";
 import type { Product } from "@/app/_types/Products";
 import { RiShieldCheckLine, RiTruckLine } from "@remixicon/react";
@@ -68,9 +69,7 @@ export default async function ProductDetails({ params }: DetailsProps) {
                         <span className="font-bold">Category:</span>{" "}
                         <span>{currentProduct.category}</span>
                     </h2>
-                    <button className="btn flex justify-center items-center w-full mx-auto mb-4 bg-(--green-color) text-white border border-(--green-color)">
-                        Add to Cart
-                    </button>
+                    <AddToCart currentProduct={currentProduct} />
                     <div className="grid grid-cols-12 justify-center gap-5 text-sm px-4">
                         <div className="col-span-6 flex items-center gap-3">
                             <RiShieldCheckLine />
