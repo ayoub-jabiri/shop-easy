@@ -1,7 +1,37 @@
+"use client";
+import Link from "next/link";
+import CartItems from "../_components/cart/CartItems";
+import OrderSummary from "../_components/cart/OrderSummary";
+import { type CartContextType, useCartContext } from "../_context/CartContext";
+
 export default function Cart() {
+    const { cartData, setCartItems }: CartContextType = useCartContext();
+
     return (
-        <div className="container py-8">
-            <h1>This is the cart page</h1>
+        <div className="bg-(--background-color) py-8 min-h-[calc(100vh-60px)]">
+            <div className="container h-full">
+                <div className="breadcrumbs text-sm mb-4">
+                    <ul>
+                        <li>
+                            <Link href="/">Home</Link>
+                        </li>
+                        <li>
+                            <span className="inline-flex items-center gap-2 hover:no-underline cursor-default">
+                                Shopping Cart
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <h1 className="text-3xl font-bold mb-6">Your Shopping Cart</h1>
+                <div className="grid grid-cols-12 gap-5">
+                    <div className="col-span-12 md:col-span-7">
+                        <CartItems cartItems={cartData.cartItems} />
+                    </div>
+                    <div className="col-span-12 md:col-span-5">
+                        <OrderSummary />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
