@@ -3,15 +3,14 @@ import React, { useState } from "react";
 import type { Product } from "../_types/Products";
 import { createContext } from "react";
 
-interface CartContextType {
-    cartItemsCount: number;
-    cartItems: Product[];
-    setItems: (newItems: Product[]) => void;
-}
-
 interface CartState {
     cartItemsCount: number;
     cartItems: Product[];
+}
+
+interface CartContextType {
+    cartData: CartState;
+    setCartItems: (newItem: Product) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -26,9 +25,18 @@ export default function CartProvider({
         cartItems: [],
     });
 
+    function setCartItems(newItem: Product) {
+        setCartData((prevData) => {
+            return {
+                cartItemsCount: prevData.cartItemsCount + 1,
+                cartItems: [...prevData.cartItems, newItem],
+            };
+        });
+    }
+
     return (
-        <div>
-            <h1>Hello World!</h1>
-        </div>
+        <CartContext.Provider value={{ cartData, setCartItems: setCartItems }}>
+            {children}
+        </CartContext.Provider>
     );
 }
