@@ -1,3 +1,4 @@
+"use client";
 import { useCartContext } from "@/app/_context/CartContext";
 import { CartContextType } from "@/app/_types/CartContextType";
 import { CartItem } from "@/app/_types/CartState";
@@ -9,19 +10,17 @@ interface CartProductItem {
 }
 
 export default function CartProductItem({ cartItem }: CartProductItem) {
-    const { setCartItems, deleteItem }: CartContextType = useCartContext();
+    const { updateItem, deleteItem }: CartContextType = useCartContext();
 
     function handleDecreaseQaunity(): void {
         console.log("substract");
+        if (cartItem.quantity > 1) {
+            updateItem(cartItem.item.id, "decrease");
+        }
     }
 
     function handleIncreaseQaunity(): void {
-        console.log("plus");
-        // setCartItems({
-        //     quantity: cartItem.quantity + 1,
-        //     item: cartItem.item,
-        // });
-        // console.log(cartData);
+        updateItem(cartItem.item.id, "increase");
     }
 
     function handleDeleteItem(): void {

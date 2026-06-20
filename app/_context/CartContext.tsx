@@ -11,6 +11,7 @@ export const CartContext = createContext<CartContextType>({
     },
     setCartItems() {},
     deleteItem() {},
+    updateItem() {},
 });
 
 export default function CartProvider({
@@ -45,12 +46,17 @@ export default function CartProvider({
         });
     }
 
+    function updateItem(itemId: number, type: string) {
+        console.log(itemId, type);
+    }
+
     return (
         <CartContext.Provider
             value={{
                 cartData,
                 setCartItems: setCartItems,
                 deleteItem: deleteItem,
+                updateItem: updateItem,
             }}
         >
             {children}
