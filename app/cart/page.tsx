@@ -32,7 +32,7 @@ export default function Cart() {
                 {cartData.cartItemsCount > 0 && (
                     <div className="grid grid-cols-12 gap-5">
                         <div className="col-span-12 md:col-span-7">
-                            <CartItems cartItems={cartData.cartItems} />
+                            <CartItems />
                         </div>
                         <div className="col-span-12 md:col-span-5">
                             <OrderSummary />
