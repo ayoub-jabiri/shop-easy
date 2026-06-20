@@ -9,7 +9,7 @@ interface CartProductItem {
 }
 
 export default function CartProductItem({ cartItem }: CartProductItem) {
-    const { cartData, setCartItems }: CartContextType = useCartContext();
+    const { setCartItems, deleteItem }: CartContextType = useCartContext();
 
     function handleDecreaseQaunity(): void {
         console.log("substract");
@@ -22,6 +22,10 @@ export default function CartProductItem({ cartItem }: CartProductItem) {
         //     item: cartItem.item,
         // });
         // console.log(cartData);
+    }
+
+    function handleDeleteItem(): void {
+        deleteItem(cartItem.item.id);
     }
 
     return (
@@ -69,7 +73,7 @@ export default function CartProductItem({ cartItem }: CartProductItem) {
                     </div>
                 </div>
                 {/* End Input Number */}
-                <button className="cursor-pointer">
+                <button className="cursor-pointer" onClick={handleDeleteItem}>
                     <RiDeleteBin5Line className="w-[20px]" />
                 </button>
             </div>

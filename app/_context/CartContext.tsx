@@ -10,6 +10,7 @@ export const CartContext = createContext<CartContextType>({
         cartItems: [],
     },
     setCartItems() {},
+    deleteItem() {},
 });
 
 export default function CartProvider({
@@ -31,8 +32,27 @@ export default function CartProvider({
         });
     }
 
+    function deleteItem(itemId: number) {
+        setCartData((prevData) => {
+            const newData: CartState = {
+                cartItemsCount: prevData.cartItemsCount - 1,
+                cartItems: prevData.cartItems.filter(
+                    (cartItem) => cartItem.item.id != itemId
+                ),
+            };
+
+            return newData;
+        });
+    }
+
     return (
-        <CartContext.Provider value={{ cartData, setCartItems: setCartItems }}>
+        <CartContext.Provider
+            value={{
+                cartData,
+                setCartItems: setCartItems,
+                deleteItem: deleteItem,
+            }}
+        >
             {children}
         </CartContext.Provider>
     );
