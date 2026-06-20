@@ -2,7 +2,8 @@
 import Link from "next/link";
 import CartItems from "../_components/cart/CartItems";
 import OrderSummary from "../_components/cart/OrderSummary";
-import { type CartContextType, useCartContext } from "../_context/CartContext";
+import { useCartContext } from "../_context/CartContext";
+import { CartContextType } from "../_types/CartContextType";
 
 export default function Cart() {
     const { cartData, setCartItems }: CartContextType = useCartContext();

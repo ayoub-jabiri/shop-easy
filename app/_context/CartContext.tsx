@@ -1,17 +1,8 @@
 "use client";
 import React, { useContext, useState } from "react";
-import type { Product } from "../_types/Products";
 import { createContext } from "react";
-
-interface CartState {
-    cartItemsCount: number;
-    cartItems: Product[];
-}
-
-export interface CartContextType {
-    cartData: CartState;
-    setCartItems: (newItem: Product) => void;
-}
+import { CartContextType } from "../_types/CartContextType";
+import { CartItem, CartState } from "../_types/CartState";
 
 export const CartContext = createContext<CartContextType>({
     cartData: {
@@ -31,7 +22,7 @@ export default function CartProvider({
         cartItems: [],
     });
 
-    function setCartItems(newItem: Product) {
+    function setCartItems(newItem: CartItem) {
         setCartData((prevData) => {
             return {
                 cartItemsCount: prevData.cartItemsCount + 1,

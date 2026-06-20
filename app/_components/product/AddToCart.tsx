@@ -1,8 +1,7 @@
 "use client";
-import {
-    useCartContext,
-    type CartContextType,
-} from "@/app/_context/CartContext";
+import { useCartContext } from "@/app/_context/CartContext";
+import { CartContextType } from "@/app/_types/CartContextType";
+import { CartItem } from "@/app/_types/CartState";
 import { Product } from "@/app/_types/Products";
 import { useState } from "react";
 
@@ -17,15 +16,17 @@ export default function AddToCart({ currentProduct }: AddToCartProps) {
 
     // Check if the Product already exists in the Cart
     const item = cartData.cartItems.find(
-        (item: Product) => item.slug == currentProduct.slug
+        (cartItem: CartItem) => cartItem.item.slug == currentProduct.slug
     );
-    console.log(cartData);
     if (item && !isAdded) {
         setIsAdded(true);
     }
 
     function handleAddToCart(): void {
-        setCartItems(currentProduct);
+        setCartItems({
+            quantity: 1,
+            item: currentProduct,
+        });
         setIsAdded(true);
     }
 
