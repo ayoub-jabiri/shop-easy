@@ -30,7 +30,7 @@ export default function Cart() {
                     </div>
                 )}
                 {cartData.cartItemsCount > 0 && (
-                    <div className="grid grid-cols-12 gap-10">
+                    <div className="grid grid-cols-12 md:gap-x-10 max-md:gap-y-10">
                         <div className="col-span-12 md:col-span-8">
                             <CartItems />
                         </div>

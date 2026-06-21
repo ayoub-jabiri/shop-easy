@@ -42,7 +42,7 @@ export default function CartProductItem({ cartItem }: CartProductItem) {
                 <h2 className="text-sm mb-2">{cartItem.item.category}</h2>
                 <h2 className="text-sm font-bold">{cartItem.item.price} $</h2>
             </div>
-            <div className="col-span-4 flex justify-end gap-8">
+            <div className="col-span-4 flex justify-end gap-8 max-md:flex-col max-md:items-end">
                 <div className="py-1 px-2 inline-block bg-layer bg-(--background-color) border border-[#888] rounded-lg">
                     <div className="flex items-center gap-x-1.5">
                         <button
