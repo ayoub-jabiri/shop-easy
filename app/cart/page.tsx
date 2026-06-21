@@ -6,7 +6,7 @@ import { useCartContext } from "../_context/CartContext";
 import { CartContextType } from "../_types/CartContextType";
 
 export default function Cart() {
-    const { cartData, setCartItems }: CartContextType = useCartContext();
+    const { cartData }: CartContextType = useCartContext();
 
     return (
         <div className="bg-(--background-color) py-8 min-h-[calc(100vh-60px)]">
@@ -30,11 +30,11 @@ export default function Cart() {
                     </div>
                 )}
                 {cartData.cartItemsCount > 0 && (
-                    <div className="grid grid-cols-12 gap-5">
-                        <div className="col-span-12 md:col-span-7">
+                    <div className="grid grid-cols-12 gap-10">
+                        <div className="col-span-12 md:col-span-8">
                             <CartItems />
                         </div>
-                        <div className="col-span-12 md:col-span-5">
+                        <div className="col-span-12 md:col-span-4">
                             <OrderSummary />
                         </div>
                     </div>

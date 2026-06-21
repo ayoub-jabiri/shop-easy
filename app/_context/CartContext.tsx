@@ -12,6 +12,7 @@ export const CartContext = createContext<CartContextType>({
     setCartItems() {},
     deleteItem() {},
     updateItem() {},
+    handleCheckout() {},
 });
 
 export default function CartProvider({
@@ -50,8 +51,6 @@ export default function CartProvider({
         switch (type) {
             case "increase":
                 setCartData((prevData) => {
-                    console.log("calling update from context");
-
                     const newartItems: CartItem[] = [...prevData.cartItems].map(
                         (cartItem: CartItem) => {
                             if (cartItem.item.id == itemId) {
@@ -73,8 +72,6 @@ export default function CartProvider({
                 break;
             case "decrease":
                 setCartData((prevData) => {
-                    console.log("calling update from context");
-
                     const newartItems: CartItem[] = [...prevData.cartItems].map(
                         (cartItem: CartItem) => {
                             if (cartItem.item.id == itemId) {
@@ -95,6 +92,13 @@ export default function CartProvider({
         }
     }
 
+    function handleCheckout(): void {
+        setCartData({
+            cartItemsCount: 0,
+            cartItems: [],
+        });
+    }
+
     return (
         <CartContext.Provider
             value={{
@@ -102,6 +106,7 @@ export default function CartProvider({
                 setCartItems: setCartItems,
                 deleteItem: deleteItem,
                 updateItem: updateItem,
+                handleCheckout: handleCheckout,
             }}
         >
             {children}
