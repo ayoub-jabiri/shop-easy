@@ -47,7 +47,52 @@ export default function CartProvider({
     }
 
     function updateItem(itemId: number, type: string) {
-        console.log(itemId, type);
+        switch (type) {
+            case "increase":
+                setCartData((prevData) => {
+                    console.log("calling update from context");
+
+                    const newartItems: CartItem[] = [...prevData.cartItems].map(
+                        (cartItem: CartItem) => {
+                            if (cartItem.item.id == itemId) {
+                                cartItem.quantity += 1;
+                            }
+
+                            return cartItem;
+                        }
+                    );
+
+                    const newData: CartState = {
+                        cartItemsCount: prevData.cartItemsCount,
+                        cartItems: newartItems,
+                    };
+
+                    return newData;
+                });
+
+                break;
+            case "decrease":
+                setCartData((prevData) => {
+                    console.log("calling update from context");
+
+                    const newartItems: CartItem[] = [...prevData.cartItems].map(
+                        (cartItem: CartItem) => {
+                            if (cartItem.item.id == itemId) {
+                                cartItem.quantity -= 1;
+                            }
+
+                            return cartItem;
+                        }
+                    );
+
+                    const newData: CartState = {
+                        cartItemsCount: prevData.cartItemsCount,
+                        cartItems: newartItems,
+                    };
+
+                    return newData;
+                });
+        }
     }
 
     return (

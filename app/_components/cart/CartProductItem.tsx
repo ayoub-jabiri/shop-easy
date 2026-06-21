@@ -20,6 +20,8 @@ export default function CartProductItem({ cartItem }: CartProductItem) {
     }
 
     function handleIncreaseQaunity(): void {
+        console.log("calling update");
+
         updateItem(cartItem.item.id, "increase");
     }
 
@@ -60,6 +62,7 @@ export default function CartProductItem({ cartItem }: CartProductItem) {
                             type="number"
                             aria-roledescription="Number field"
                             value={cartItem.quantity}
+                            disabled
                         />
                         <button
                             type="button"
